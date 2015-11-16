@@ -1,7 +1,9 @@
 $(function(){
-	//布局	
+	//布局
+    var windowHeight,windowWidth,W=150,H=46;
 	var layout = function(){
-		var windowHeight = $(window).height(),windowWidth = $(window).width(),W=150,H=46;
+		windowHeight = $(window).height();
+        windowWidth = $(window).width();
 		$('.header').height(H);
 		$('.main-left').width(W);
 		$('.main').height(windowHeight-H);
@@ -15,12 +17,19 @@ $(function(){
 	//绑定左侧事件
 	var menuHover;
 	$('.nav-parent li').on('mouseenter',function(){
-		menuHover=$(this);
-		menuHover.find('.nav-son').css({
-			left:menuHover.width()
-		}).show();
+        var _l = windowHeight;
+		menuHover=$(this).find('.nav-son');
+		menuHover.css({
+			left:menuHover.parent().width()
+		}).show(0,function(){
+            if(_l<(menuHover.height()+menuHover.offset().top)){
+                menuHover.css("top",_l-(menuHover.height()+menuHover.offset().top));
+            }
+        });
 	}).on('mouseleave',function(){
-		menuHover.find('.nav-son').hide();
+		menuHover.hide(0,function(){
+            menuHover.css("top",0);
+        });
 	});
 	
 	//侧栏收缩事件
