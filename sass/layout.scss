@@ -1,0 +1,347 @@
+html,body{
+	font-family: Microsoft YaHei,Airal,simhei,simsun;
+	font-size: 12px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.main-left{
+	float: left;
+//    overflow-y: auto;
+//    overflow-x: visible;
+	background-color: #f6f6f6;
+	border-right:1px solid $border-color;
+}
+.main-left,.main-center{
+	height: 100%;
+}
+.main-center-center{
+    width: 100%;
+}
+.header{
+	height: $header-height;
+	background-color: $color-primary;
+	@include background-image(image-url('../images/bg_header_title.png'));
+	background-position: 10px center;
+	background-repeat: no-repeat;
+	text-align: right;
+	font-size: 12px;
+	color: #fff;
+}
+.header a{
+	color: #fff;
+	text-decoration: none;
+}
+.header .link-user{
+	margin-right: 10px;
+	text-decoration: underline;
+}
+.header p{
+	padding-top:15px;
+	padding-bottom: 5px;
+	height: 26px;
+	line-height: 26px;
+	.time{
+		em{
+			margin: 0 10px;
+		}
+	}
+}
+.nav{
+	font-size: 14px;
+	height:100%;
+}
+.nav-parent a,.nav-parent span{
+	line-height:33px;
+	display: block;
+	border-left:5px solid transparent;
+	color: $font-color-default;
+	text-decoration: none;
+}
+.nav-parent span{
+	font-weight: 700;
+}
+.nav-parent a:hover{
+	border-color:$color-primary; 
+	background-color: #eeeeee;
+	font-weight: 700;
+	color: $color-primary;
+}
+.nav-parent .nav-son{
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: none;
+	width: 155px;
+	z-index: 99;
+	font-size: 12px;
+	background-color: #f6f6f6;
+	border: 1px solid $border-color;
+}
+.nav-son a{
+	display: block;
+	@include background-image(image-url('../images/icon_menu_s.png'));
+	background-repeat: no-repeat;
+	background-position: 4px 8px;
+	padding-left:20px;
+	border:none;
+	line-height: 30px;
+	&:hover{
+		background-color: $color-primary;
+		color: #ffffff;
+		background-position: 4px -22px;
+	}
+}
+.nav-parent li{
+	position: relative;
+	clear: left;
+	
+	.icon{
+		float: left;
+		display: block;
+		height: 33px;
+		width: 34px;
+		@include background-image(image-url('../images/icon_menu.png'));
+		background-repeat: no-repeat;
+	}
+	a{
+		overflow: hidden;
+	}
+}
+.main-center-top{
+	height: 34px;
+	background-color: #f6f6f6;
+	border-bottom:1px solid $border-color;
+	table{
+		display: block;
+	}
+}
+.main-center-top{
+	
+}
+.tab-bar{
+	height: 25px;
+	padding:10px 10px 0 20px;
+	ul{
+		display: table;
+	}
+	li{
+		display: table-cell;
+		*display: inline-block;
+		position: relative;
+		span{
+			display: block;
+			position: absolute;
+			right: 3px;
+			top: 6px;
+			cursor: pointer;
+			@include border-radius(100%);
+			width: 14px;
+			height: 14px;
+			text-align: center;
+			color: $font-color-default;
+			font-size:14px;
+			font-weight: 700;
+			&:hover{
+				color: #fff;
+				background-color: $btn-color-out-hover;
+			}
+		}
+		a{
+			display: block;
+			@include border-top-radius(3px);
+			height: 24px;
+			padding:0 20px 0 10px;
+			text-decoration: none;
+			color: $font-color-default;
+			line-height: 24px;
+			border:{
+				left:1px solid transparent;
+				right:1px solid transparent;
+				top:1px solid transparent;
+			}
+			&:hover{
+				color: $color-primary;
+			}
+			&.active{
+				border:{
+					left:1px solid $color-border-parimary;
+					right:1px solid $color-border-parimary;
+					top:1px solid $color-border-parimary;
+				}
+				color: #ffffff;
+				font-weight: 700;
+				background-color: $color-primary;
+				+ span{
+					color: #ffffff;
+				}
+			}
+			
+		}
+	}
+	ul{
+		overflow: hidden;
+		position: relative;
+	}
+}
+.main-box{
+	background-color: #fff;
+	padding:10px;
+    height: 100%;
+    ul{
+        overflow: hidden;
+        height: 100%;  
+        @include background-image(image-url('../images/bg_main.png'));
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+}
+.index{
+	li{
+		float: left;
+		margin: 10px;
+		a{
+			color: $font-color-default;
+			display: block;
+			padding:5px 15px;
+			@include border-radius(3px);
+			border:1px solid transparent;
+			text-decoration: none;
+			text-align: center;
+			line-height: 20px;
+			i{
+				display: block;
+				width: 54px;
+				height: 54px;
+				@include background-image(image-url('../images/bg_index_icon.png'));
+				background-repeat: no-repeat;
+			}
+			&:hover{
+				border-color:$border-color;
+				background-color: #eeeeee;
+			}
+		}
+	}
+}
+
+.login-header{
+	width: 100%;
+	@include background-image(image-url('../images/bg_header.png'));
+	background-position: left center;
+	background-repeat: no-repeat;
+	background-color: #d7e7f4;
+	position: relative;
+	height: 80px;
+}
+.login-nav{
+	width: 100%;
+	text-align: center;
+	background-color: $color-primary;
+	ul{
+		width: 1000px;
+		margin: auto;
+		overflow: hidden;
+		li{
+			display: inline;
+			line-height: 33px;
+			float: left;
+			font-size: 14px;
+			a{
+				text-decoration: none;
+				padding:0 20px;
+				display: block;
+				color: #ffffff;
+				&:hover,&.active{
+					background-color: darken($color-primary,10%);
+				}
+			}
+		}
+	}
+}
+.login-main{
+	width: 1000px;
+	margin: 0 auto;
+	overflow: hidden;
+	ul{
+		position: relative;
+		height: 511px;
+		li{
+			position: absolute;
+			left: 0;
+			
+			top: 0;
+			bottom:0;
+			&.first{
+				z-index: 3;
+			}
+			&.two{
+				z-index: 2;
+			}
+			&.three{
+				z-index: 1;
+			}
+		}
+	}
+	.banner-tips{
+		text-align: center;
+		a{
+			display: inline-block;
+			width: 0px;
+			height: 0px;
+			padding: 5px;
+			@include border-radius(100%);
+			background-color: $color-primary;
+			margin: 0 5px;
+			&:hover,&.active{
+				background-color: $color-info;
+			}
+		}
+	}
+}
+.login-footer{
+	@include background-image(image-url('../images/bg_footer.jpg'));
+	background-position: center 30px;
+	background-repeat: no-repeat;
+	text-align: center;
+	background-color: #ffffff;
+	padding-top:80px;
+	color: lighten($font-color-default,10%);
+}
+.layer-login{
+    width: 350px;
+    label{
+        display: block;
+        color: $font-color-default;
+        padding:10px 10px 0 10px;
+        line-height: 25px;
+        input{
+            border:1px solid $border-color;
+            display: block;
+            margin: 0;
+            line-height: 1.5;
+            padding: 5px 10px;
+            @include border-radius(3px);
+            box-sizing: content-box;
+            width: 308px;
+        }
+        p{
+            padding:0;
+            margin: 0;
+            overflow: inherit;
+        }
+    }
+    p{
+        display: block;
+        overflow: hidden;
+        padding:0 10px;
+        margin-top: 15px;
+        a{
+            &.btn-login-true{
+                float: left;
+            }
+            &.btn-login-cancel{
+                float: right;
+            }
+        }
+    }
+}

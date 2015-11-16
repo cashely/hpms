@@ -1,0 +1,67 @@
+.btn{
+	padding:4px 10px;
+	word-spacing: 50px;
+    @include border-radius(3px);
+    text-decoration: none;
+}
+.btn-loginOut{
+	background-color: $btn-color-out;
+	border:1px solid $btn-color-out-border;
+	@include border-radius(3px);
+	margin:0 10px;
+	a &:hover{
+		background-color: $btn-color-out-border;
+	}
+}
+.bar-controller{
+	display: block;
+	width: 23px;
+    float: left;
+	padding:6px;
+	height: 23px;
+	&.active{
+		i.icon-controller{
+			background-position: center top;
+		}
+	}
+}
+.btn-login{
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	@include background-image(image-url('../images/icon_menu.png'));
+	background-position: 5px -378px;
+	background-repeat:  no-repeat;
+	background-color: $color-primary;
+	border: 1px solid $color-border-parimary;
+	padding:10px 10px 10px 40px;
+	color: #ffffff;
+	font-size: 14px;
+	text-decoration: none;
+	@include border-radius(3px);
+	&:hover{
+		background-color: lighten($color-primary,5%);
+	}
+}
+.btn-login-true,.btn-login-cancel{
+    padding: 7px 10px 7px 30px;
+    font-size: 14px;
+    @include background-image(image-url('../images/icon_menu.png'));
+    background-repeat: no-repeat;
+}
+.btn-login-true{
+    background-color: $color-primary;
+    background-position: 0 -418px;
+    color: #ffffff;
+    &:hover{
+		background-color: lighten($color-primary,5%);
+	}
+}
+.btn-login-cancel{
+    background-color: $btn-color-cancel;
+    background-position: 0 -448px;
+    color: $font-color-default;
+    &:hover{
+		background-color: lighten($btn-color-cancel,5%);
+	}
+}
