@@ -58,6 +58,10 @@ html,body{
 	color: $font-color-default;
 	text-decoration: none;
 }
+.nav-parent .active{
+	background-color: #5AA7F2;
+	color: #ffffff;
+}
 .nav-parent span{
 	font-weight: 700;
 }

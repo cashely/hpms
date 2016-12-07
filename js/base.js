@@ -18,7 +18,8 @@ $(function(){
 	var menuHover;
 	$('.nav-parent li').on('mouseenter',function(){
         var _l = windowHeight;
-		menuHover=$(this).find('.nav-son');
+		menuHover=$(this).find('.nav-son').first();
+		$(this).parent('.nav-son').prev("a").addClass( "active");
 		menuHover.css({
 			left:menuHover.parent().width()
 		}).show(0,function(){
@@ -27,9 +28,10 @@ $(function(){
             }
         });
 	}).on('mouseleave',function(){
-		menuHover.hide(0,function(){
-            menuHover.css("top",0);
+		$(this).find('.nav-son').hide(0,function(){
+			$(this).find('.nav-son').css("top",0);
         });
+		$(this).parent().find("a").removeClass( "active" );
 	});
 	
 	//侧栏收缩事件
