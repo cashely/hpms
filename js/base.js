@@ -4,16 +4,19 @@ $(function(){
 	var layout = function(){
 		windowHeight = $(window).height();
         windowWidth = $(window).width();
-		$('.header').height(H);
+		$('.header').height(H).width(windowWidth);
 		$('.main-left').width(W);
-		$('.main').height(windowHeight-H);
+		$('.main').height(windowHeight-H).width(windowWidth);
 		$('.main-center-center').height(windowHeight-H-35);
 	};
-	
+
 	$(window).resize(function(){
 		layout();
 	}).trigger('resize');
-	
+
+	//隐藏滚动条
+	$('body').addClass("scrollbar");
+
 	//绑定左侧事件
 	var menuHover;
 	$('.nav-parent li').on('mouseenter',function(){
@@ -23,15 +26,45 @@ $(function(){
 		menuHover.css({
 			left:menuHover.parent().width()
 		}).show(0,function(){
-            if(_l<(menuHover.height()+menuHover.offset().top)){
-                menuHover.css("top",_l-(menuHover.height()+menuHover.offset().top));
+			if((menuHover.find('.nav-son').length!=0) && menuHover.find('li a i').length==0){
+				menuHover.children('li').children('a').append("<i> ▶ </i>");
+			}
+            if((_l<(menuHover.height()+menuHover.offset().top))){
+				if(menuHover.height() <= windowHeight){
+					menuHover.css("top",_l-(menuHover.height()+menuHover.offset().top));
+				}else{
+					menuHover.offset({top:0})
+					$('body').css({"overflow-x":"hidden","overflow-y":"auto"});
+					//绑定滚动事件
+					$(window).scroll(function(){
+						if($(document).scrollTop()==0 && (!$('.nav-parent li a').hasClass("active"))){
+							$('body').css("overflow",'hidden');
+							$('.header').css("width",windowWidth);
+							$('.main').css("width",windowWidth);
+						}
+					});
+					var mainheight=menuHover.height()-46
+					if(mainheight<335)	mainheight=335;
+					$('.main').css({height:mainheight,width:windowWidth-15});
+					$('.header').css("width",windowWidth-15);
+				}
             }
         });
 	}).on('mouseleave',function(){
-		$(this).find('.nav-son').hide(0,function(){
+        menuHover.hide(0,function(){
+			menuHover.css("top",0);
+        });
+        $(this).find('.nav-son').hide(0,function(){
 			$(this).find('.nav-son').css("top",0);
         });
 		$(this).parent().find("a").removeClass( "active" );
+		if($(this).find('.nav-son').length!=0){
+			if($(document).scrollTop()==0){
+				$('body').css("overflow",'hidden');
+				$('.header').css("width",windowWidth);
+				$('.main').css("width",windowWidth);
+			}
+		}
 	});
 	
 	//侧栏收缩事件
